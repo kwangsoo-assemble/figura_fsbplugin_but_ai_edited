@@ -17,7 +17,7 @@
 |---|---|
 | Server | Paper / Purpur 1.21.8 (`api-version: 1.21`) |
 | Java | 21 |
-| Plugin | name `FiguraFSB`, version 0.1.6, command `/fsb`, data folder `plugins/FiguraFSB/` |
+| Plugin | name `FiguraFSB`, version `0.1.6-but-ai-edited.1` (see 11), command `/fsb`, data folder `plugins/FiguraFSB/` |
 | Companion client | figura_core_but_ai_edited (shares `server-common/` as the same source) |
 
 ## Changes from upstream
@@ -120,6 +120,13 @@ Upstream never deleted avatar files or player records, so they piled up. Permiss
 
 Code: `server-common/…/commands/FiguraCleanupCommand.java` · `server-common/…/FiguraCacheCleanup.java` (both new) ·
 `server-common/…/avatars/FiguraServerAvatarManager.java`
+
+### 11. Version number
+
+To avoid confusion with the upstream FSB, the version carries a [SemVer pre-release](https://semver.org/#spec-item-9) tag —
+`0.1.6-but-ai-edited.1` (jar: `figura-fsb-0.1.6-but-ai-edited.1.jar`). It matches the tag of the companion client (figura_core_but_ai_edited).
+
+Code: root `gradle.properties`
 
 ## Settings (`plugins/FiguraFSB/config.json`)
 
