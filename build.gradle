@@ -1,0 +1,17 @@
+allprojects {
+    apply plugin: "java"
+
+    version = rootProject.mod_version
+    group = rootProject.maven_group
+
+    repositories {
+        mavenCentral()
+        maven { url "https://libraries.minecraft.net" }
+        maven { url "https://hub.spigotmc.org/nexus/content/repositories/snapshots/" }
+    }
+
+    tasks.withType(JavaCompile).configureEach {
+        options.encoding = "UTF-8"
+        options.release = rootProject.java_version as int
+    }
+}

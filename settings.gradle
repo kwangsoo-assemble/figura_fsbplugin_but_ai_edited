@@ -1,0 +1,10 @@
+pluginManagement {
+    repositories {
+        gradlePluginPortal()
+    }
+}
+
+include("server-common")
+include("spigot")
+
+rootProject.name = "FiguraFSB"

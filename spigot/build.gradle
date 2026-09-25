@@ -1,0 +1,46 @@
+plugins {
+    id "com.github.johnrengelman.shadow" version "8.1.1"
+}
+
+configurations {
+    common
+    shadowCommon // Don't use shadow from the shadow plugin since it *excludes* files.
+    compileClasspath.extendsFrom common
+    runtimeClasspath.extendsFrom common
+}
+
+dependencies {
+    compileOnly "org.spigotmc:spigot-api:${rootProject.minecraft_version}-R0.1-SNAPSHOT"
+
+    compileOnly "com.mojang:brigadier:${rootProject.brigadier}"
+
+    common(project(path: ":server-common")) { transitive false }
+    shadowCommon(project(path: ":server-common")) { transitive false }
+}
+
+jar {
+    archiveClassifier.set "spigot-unshaded"
+}
+
+shadowJar {
+    configurations = [project.configurations.shadowCommon]
+    archiveBaseName.set "${rootProject.archives_base_name}"
+    archiveClassifier.set ""
+}
+
+build {
+    dependsOn shadowJar
+}
+
+processResources {
+    Map<String, Object> properties = new HashMap<>()
+
+    properties.put("version", project.version)
+    properties.put("java_version", rootProject.java_version)
+    properties.put("minecraft_version", rootProject.minecraft_version)
+
+    properties.forEach((k, v) -> inputs.property(k, v.toString()))
+    filesMatching("plugin.yml") {
+        expand properties
+    }
+}

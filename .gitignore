@@ -1,0 +1,22 @@
+# Gradle
+.gradle/
+build/
+out/
+classes/
+
+# IDE
+.idea/
+*.iml
+*.ipr
+*.iws
+.settings/
+.vscode/
+bin/
+.classpath
+.project
+
+# OS
+.DS_Store
+
+# Local test server
+run/
